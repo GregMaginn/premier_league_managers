@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 import requests
 import pymongo
 
+from splinter import Browser
+from webdriver_manager.chrome import ChromeDriverManager
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 
@@ -17,4 +19,11 @@ browser.vist(url)
 html = browser.html
 soup = beautifulSoup(html, 'html.parser')
 
+#an array that will contain manager objects containing their name, team coached,
+# and link to their page
 all_managers = []
+
+results = browser.find_by_css('tr')
+
+for result in results:
+    print(result) 
